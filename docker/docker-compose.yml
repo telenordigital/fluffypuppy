@@ -1,0 +1,19 @@
+version: "3.4"
+services:
+  nginx:
+      build:
+        # context: dev/nginx
+        context: nginx
+      ports:
+        - "80:80"
+      volumes:
+          - scanreports:/usr/share/nginx/html:ro
+
+  fluffypuppy:
+      build:
+        context: fluffypuppy
+      volumes:
+          - scanreports:/opt/scout2/scout2-report      
+
+volumes:
+  scanreports:

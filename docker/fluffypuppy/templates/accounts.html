@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <title>Fluffy Puppy!</title>
+  <meta charset="utf-8">
+  <link rel="shortcut icon" type="image/gif" href="fluffypuppy-favicon.gif"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand"><img src="fluffypuppy.png" style="width:50px;height:50px;"></a>
+      <a class="navbar-brand" href="index.html">Fluffy Puppy</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="accounts.html">AWS Accounts</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="span12">
+            <ul class="nav nav-tabs" id="myTabs">
+              <li class="active"><a href="#production" data-toggle="tab">Production</a></li>
+              <li><a href="#development" data-toggle="tab">Development</a></li>
+              <li><a href="#iam" data-toggle="tab">IAM</a></li>
+            </ul>
+
+            <div class="tab-content">
+              <div class="tab-pane active" id="production">
+                  <iframe src="report-production.html" width="110%" onload="this.height=screen.height;"></iframe>
+                </div>
+              <div class="tab-pane" id="development">
+                  <iframe src="report-development.html" width="110%" onload="this.height=screen.height;"></iframe>
+                </div>
+              <div class="tab-pane" id="iam">
+                  <iframe src="report-iam.html" width="110%" onload="this.height=screen.height;"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>​
+
+<script>
+$('#myTabs').bind('show', function(e) {
+
+    // identify the tab-pane
+    paneID = $(e.target).attr('href');
+
+    // get the value of the custom data attribute to use as the iframe source
+    src = $(paneID).attr('data-src');
+
+    //if the iframe on the selected tab-pane hasn't been loaded yet...
+    if($(paneID+" iframe").attr("src")=="")
+    {
+        // update the iframe src attribute using the custom data-attribute value
+        $(paneID+" iframe").attr("src",src);
+    }
+});
+</script>
+
+</body>
+</html>
